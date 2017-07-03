@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>刻意练习-用JS讲故事</title>
+</head>
+<body>
+  <script>
+    var Flower = function() {}
+      var xiaoming = {
+        name: '小明',
+        age: 22,
+        sendFlower: function(target) {
+          var flower = new Flower();
+          target.receiverFlower(flower,this);
+        }
+      }
+      var xiaomei = {
+        name: '小美',
+        age: 21,
+        receiverFlower: function(flower,sender){
+        console.log(this.name + '收到了' + sender.name + '的花');
+       }
+      }
+      //小红 代理模式
+      var xiaohong = {
+        receiverFlower: function(flower,sender){
+          if(sender.name ==='小明'){
+            console.log('明哥，我们在一起吧');
+
+          }else{xiaomei.receiverFlower(flower,sender);}
+        }
+      }
+      xiaoming.sendFlower(xiaohong);
+
+  </script>
+</body>
+</html>
